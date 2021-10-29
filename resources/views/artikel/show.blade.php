@@ -38,7 +38,7 @@
         <h2>Komentar Lainnya</h2>
         @forelse ($komen as $k)
         <div class="card shadow-sm my-3">
-            <div class="card-header">{{ $k->name . ', ' . $k->created_at->diffForHumans() }}</div>
+            <div class="card-header">{{ $k->user->name . ', ' . $k->created_at->diffForHumans() }}</div>
             <div class="card-body">
                 {!! $k->komen !!}
             </div>

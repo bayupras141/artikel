@@ -16,4 +16,9 @@ class Komen extends Model
         'konten_id',
         'komen',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

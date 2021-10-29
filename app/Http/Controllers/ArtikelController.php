@@ -83,10 +83,8 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        $komen = Komen::where('konten_id', $id)->get();
-        // @dd();
-        // $user = User::where('id', )->get();
-        $dd($user);
+        $komen = Komen::with('user')->where('konten_id', $id)->get();
+        // $dd($komen);
         $content = \App\Models\Konten::findOrFail($id);
         return view('artikel.show', compact('content', 'komen'));
     }
