@@ -48,6 +48,7 @@
             <p>Tidak Ada Komentar</p>
         </div>
         @endforelse
+        {{$komen->links()}}
     </div>
 </div>
 

@@ -14,10 +14,12 @@ use App\Http\Controllers\ArtikelController;
 |
 */
 
-Route::get('/', [App\Http\Controllers\ArtikelController::class, 'index']);
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\ArtikelController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::post('/tambahkan-komentar/{artikel:id}', [App\Http\Controllers\KomenlController::class, 'store'])->name('komen.store');
 Route::resource('artikel', ArtikelController::class);
+Route::prefix('artikel')->middleware('auth')->group(function() {
+    Route::get('/create', [App\Http\Controllers\ArtikelController::class, 'create'])->name('artikel.create');
+    Route::post('/create', [App\Http\Controllers\ArtikelController::class, 'store'])->name('artikel.store');
+});

@@ -35,7 +35,6 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        // @dd(auth()->user()->id);
         return view('artikel.create');
     }
 
@@ -70,9 +69,7 @@ class ArtikelController extends Controller
             'image' => $imgName,
             'status' => 1,
         ]);
-
-        session()->flash('success', 'Article was created successfully!');
-        return redirect()->route('artikel.index');
+        return redirect()->route('artikel.create');
     }
 
     /**
@@ -83,7 +80,7 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        $komen = Komen::with('user')->where('konten_id', $id)->get();
+        $komen = Komen::with('user')->where('konten_id', $id)->simplePaginate(5);
         // $dd($komen);
         $content = \App\Models\Konten::findOrFail($id);
         return view('artikel.show', compact('content', 'komen'));

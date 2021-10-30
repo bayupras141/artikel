@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <form action="" method="get">
                 <div class="input-group my-3">
                     <input type="text" name="search" id="search" class="form-control" placeholder="Search by title.." style="max-width: 40%;">
@@ -25,6 +25,13 @@
                     </div>
                   </div>
             </form>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group my-3">
+                <div class="input-group-append">
+                    <a href="{{ route('artikel.create') }}" class="btn btn-primary">Tambah Artikel</a>
+                </div>
+            </div>
         </div>
     </div>
     
